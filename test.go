@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // Extra desafio tenico ***
 
@@ -22,7 +24,7 @@ import "fmt"
 // 	func (11) = ?
 
 func main() {
-	next := findNext(11)
+	next := findLele(10)
 
 	fmt.Println("next:", next)
 }
@@ -49,4 +51,29 @@ func findNext(pos int) int {
 	fmt.Println(arr)
 
 	return arr[pos]
+}
+
+func findLele(pos int) int {
+	// 	(0 * 2) - 0 = 0
+	// (1 * 2) - 0 = 2
+	// (2 * 2) - 1 = 3
+	// (3 * 2) - 1 = 5
+	// (4 * 2) - 2 = 7
+	// (5 * 2) - 2 = 8
+	// ...
+	// findNext = (pos) => {
+	// 	const rule = pos % 2 == 0 ? pos / 2 : (pos - 1) / 2;
+	// 	const number = pos * 2 - rule;
+	// 	return number;
+	//   };
+	//   console.log(findNext(11));
+
+	rule := pos / 2
+	if (pos % 2) != 0 {
+		rule = (pos - 1) / 2
+	}
+
+	number := pos*2 - rule
+
+	return number
 }
